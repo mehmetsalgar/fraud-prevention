@@ -29,7 +29,6 @@ apply plugin: 'org.unbroken-dome.helm'
 apply plugin: 'org.unbroken-dome.helm-publish'
 
 group = 'org.salgar.akka.fsm'
-version = '1.0.9'
 sourceCompatibility = '17'
 
 ext {
@@ -97,7 +96,7 @@ helm {
 		cs {
 			publish = true
 			chartName = 'fraud-prevention-application'
-			chartVersion = '1.0.11'
+			chartVersion = "${project.version}"
 			sourceDir = file('helm')
 			filtering {
 				values.put 'imageRepository', jib.to.image
