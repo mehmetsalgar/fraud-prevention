@@ -9,24 +9,33 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- task: gitversion/setup@0
-  displayName: Install GitVersion
-  inputs:
-    versionSpec: "5.x"
-- task: gitversion/execute@0
-  displayName: Calculating version
-  inputs:
-    useConfigFile: True
-    configFilePath: "gitversion.yml
-- task: Gradle@3
-  inputs:
-    workingDirectory: ''
-    gradleWrapperFile: 'gradlew'
-    gradleOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.17'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.xml'
-    tasks: 'build'
+stages:
+- stage: Build
+  displayName: Build
+  jobs:
+  - job: Build
+    displayName: Build
+    
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+     - task: gitversion/setup@0
+       displayName: Install GitVersion
+       inputs:
+        versionSpec: "5.x"
+     - task: gitversion/execute@0
+       displayName: Calculating version
+       inputs:
+        useConfigFile: True
+        configFilePath: "gitversion.yml
+     - task: Gradle@3
+       inputs:
+        workingDirectory: ''
+        gradleWrapperFile: 'gradlew'
+        gradleOptions: '-Xmx3072m'
+        javaHomeOption: 'JDKVersion'
+        jdkVersionOption: '1.17'
+        jdkArchitectureOption: 'x64'
+        publishJUnitResults: true
+        testResultsFiles: '**/TEST-*.xml'
+        tasks: 'build'
