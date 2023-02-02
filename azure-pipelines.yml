@@ -13,9 +13,8 @@ stages:
 - stage: Build
   displayName: Build
   jobs:
-  - job: Build
-    displayName: Build
-    
+  - job: CalculateVersion
+    displayName: Calculate Version
     pool:
       vmImage: ubuntu-latest
     steps:
@@ -24,10 +23,16 @@ stages:
        inputs:
         versionSpec: "5.x"
      - task: gitversion/execute@0
+       name: calculateVersion
        displayName: Calculating version
        inputs:
         useConfigFile: True
         configFilePath: "gitversion.yml
+  - job: Build
+    dislayName: Build
+    pool:
+      vmImage: ubuntu-latest
+    steps:
      - task: Gradle@3
        inputs:
         workingDirectory: ''
