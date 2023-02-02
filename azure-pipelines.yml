@@ -14,6 +14,11 @@ steps:
   displayName: Install GitVersion
   inputs:
     versionSpec: "5.x"
+- task: gitversion/execute@0
+  displayName: Calculating version
+  inputs:
+    useConfigFile: True
+    configFilePath: "gitversion.yml
 - task: Gradle@3
   inputs:
     workingDirectory: ''
