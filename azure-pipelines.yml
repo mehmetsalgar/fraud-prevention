@@ -27,20 +27,24 @@ stages:
        displayName: Calculating version
        inputs:
         useConfigFile: True
-        configFilePath: "gitversion.yml
+        configFilePath: "gitversion.yml"
   - job: Build
-    dislayName: Build
+    displayName: Build
+    dependsOn: CalculateVersion
     pool:
       vmImage: ubuntu-latest
+    variables:
+      version: $[dependencies.CalculateVersion.outputs['calculateVersion.GitVersion.SemVer']]
     steps:
      - task: Gradle@3
        inputs:
         workingDirectory: ''
         gradleWrapperFile: 'gradlew'
-        gradleOptions: '-Xmx3072m'
+        gradleOptions: '-Xmx3072m -P$(version)'
         javaHomeOption: 'JDKVersion'
         jdkVersionOption: '1.17'
         jdkArchitectureOption: 'x64'
         publishJUnitResults: true
         testResultsFiles: '**/TEST-*.xml'
         tasks: 'build'
+
