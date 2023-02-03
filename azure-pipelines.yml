@@ -9,6 +9,9 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+variables:
+- group: HELM_VARIABLES
+
 stages:
 - stage: Build
   displayName: Build
@@ -39,6 +42,9 @@ stages:
       version: $[dependencies.CalculateVersion.outputs['calculateVersion.GitVersion.SemVer']]
     steps:
      - task: Gradle@3
+       env:
+         ORG_GRADLE_PROJECT_HELM_USER: $(HELM_USER)
+         ORG_GRADLE_PROJECT_HELM_PASSWORD: $(HELM_PASSWORD)
        inputs:
         options: '-P$(version)'
         workingDirectory: ''
