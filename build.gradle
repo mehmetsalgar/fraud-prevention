@@ -110,14 +110,6 @@ helm {
 		}
 	}
 	repositories {
-		custom {
-			url = uri('oci://fsmakka.azurecr.io/helm')
-			uploadPath = '/charts/{name}/{version}/{filename}'
-			credentials {
-				username = "${props.HELM_USER}"
-				password = "${props.HELM_PASSWORD}"
-			}
-		}
 		/*cs_rep {
 			url 'http://fsmakka.salgar.org/repository/fsm-akka-helm/'
 			credentials {
@@ -125,13 +117,28 @@ helm {
 				password = "${props.HELM_PASSWORD}"
 			}
 		}*/
+		az {
+			url 'oci://fsmakka.azurecr.io/helm'
+			credentials {
+				username = "${props.HELM_USER}"
+				password = "${props.HELM_PASSWORD}"
+			}
+		}
 	}
 	publishing {
 		repositories {
-			nexus {
+			/*nexus {
 				url = uri('http://fsmakka.salgar.org/')
 				repository = 'fsm-akka-helm'
 				apiVersion = 'v1'
+				credentials {
+					username = "${props.HELM_USER}"
+					password = "${props.HELM_PASSWORD}"
+				}
+			}*/
+			custom {
+				url = uri('oci://fsmakka.azurecr.io/helm')
+				uploadPath = '/charts/{name}/{version}/{filename}'
 				credentials {
 					username = "${props.HELM_USER}"
 					password = "${props.HELM_PASSWORD}"
