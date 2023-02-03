@@ -40,9 +40,10 @@ stages:
     steps:
      - task: Gradle@3
        inputs:
+        options: '-P$(version)'
         workingDirectory: ''
         gradleWrapperFile: 'gradlew'
-        gradleOptions: '-Xmx3072m -P$(version)'
+        gradleOptions: '-Xmx3072m'
         javaHomeOption: 'JDKVersion'
         jdkVersionOption: '1.17'
         jdkArchitectureOption: 'x64'
