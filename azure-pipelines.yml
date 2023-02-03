@@ -27,7 +27,7 @@ stages:
        displayName: Calculating version
        inputs:
         useConfigFile: True
-        configFilePath: "gitversion.yml"
+        configFilePath: "GitVersion.yml"
   - job: Build
     displayName: Build
     dependsOn: CalculateVersion
