@@ -3,5 +3,10 @@ name: Contionuous Deployment for Development
 resources:
   pipelines:
    - pipeline: Build
-     source: azurepipeline
+     source: Build-with-Reusable
      trigger: true
+
+steps:
+  - pwsh: |
+      echo 'Halli Hallo'
+
