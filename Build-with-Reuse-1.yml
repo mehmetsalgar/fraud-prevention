@@ -5,6 +5,10 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+variables:
+- group: HELM_VARIABLES
+- group: DOCKER_VARIABLES
+
 resources:
  repositories:
    - repository: fsm-akka-azure-pipelines
@@ -12,5 +16,8 @@ resources:
      name: mehmetsalgar/fsm-akka-azure-pipelines
      endpoint: mehmetsalgar
 
-jobs:
+stages:
+- stage: Build
+  displayName: Build
+  jobs:
   - template: build.yml@fsm-akka-azure-pipelines
