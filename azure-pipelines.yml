@@ -60,4 +60,8 @@ stages:
         publishJUnitResults: true
         testResultsFiles: '**/TEST-*.xml'
         tasks: 'build -Pversion=$(version) --no-daemon'
+     - pwsh: |
+         helm registry login fsmakka.azurecr.io --username $(HELM_USER) --password $(HELM_PASSWORD)
+         helm push /home/vsts/work/1/s/build/helm/charts/fraud-prevention-application-$(version).tgz oci://fsmakka.azurecr.io/helm
+
 
