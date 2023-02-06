@@ -3,7 +3,7 @@ name: Contionuous Deployment for Development
 resources:
   pipelines:
    - pipeline: Build
-     source: azure-pipelines.yaml
+     source: azurepipeline
      trigger: true
 
 pool:
