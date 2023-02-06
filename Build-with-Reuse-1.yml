@@ -10,6 +10,7 @@ resources:
    - repository: fsm-akka-azure-pipelines
      type: github
      name: mehmetsalgar/fsm-akka-azure-pipelines
+     endpoint: mehmetsalgar
 
 jobs:
   - template: build.yml@master
