@@ -114,4 +114,5 @@ task printVersion {
 	}
 }
 tasks.jib.dependsOn tasks.printVersion
-tasks.build.dependsOn tasks.jib
+tasks.helmPackage.dependsOn tasks.jib
+tasks.build.dependsOn tasks.helmPackage
