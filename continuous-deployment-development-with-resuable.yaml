@@ -2,6 +2,7 @@ resources:
   pipelines:
    - pipeline: Build
      source: azure-pipelines
+     project: fsm-akka-4eyes
      trigger: true
 
 steps:
