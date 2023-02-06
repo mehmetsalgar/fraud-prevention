@@ -1,0 +1,12 @@
+pool:
+  vmImage: ubuntu-latest
+
+resources:
+  pipelines:
+   - pipeline: azurepipelines
+     source: azure-pipelines
+     trigger: true
+
+steps:
+  - pwsh: |
+      echo "Halli Hallo"
