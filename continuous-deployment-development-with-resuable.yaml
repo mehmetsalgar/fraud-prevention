@@ -5,10 +5,3 @@ resources:
    - pipeline: Build
      source: azurepipeline
      trigger: true
-
-pool:
-  vmImage: 'ubuntu-latest'
-
-steps:
-  - pwsh: |
-      echo "Halli Hallo"
