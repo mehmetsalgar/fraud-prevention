@@ -1,0 +1,15 @@
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+resources:
+ repositories:
+   - repository: fsm-akka-azure-pipelines
+     type: github
+     name: mehmetsalgar/fsm-akka-azure-pipelines
+
+jobs:
+  - template: build.yaml@master
