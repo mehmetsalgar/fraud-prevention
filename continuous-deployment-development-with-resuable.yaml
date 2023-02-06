@@ -1,9 +1,13 @@
+name: Contionuous Deployment for Development
+
 resources:
   pipelines:
    - pipeline: Build
-     source: azure-pipelines
-     project: fsm-akka-4eyes
+     source: azure-pipelines.yaml
      trigger: true
+
+pool:
+  vmImage: 'ubuntu-latest'
 
 steps:
   - pwsh: |
