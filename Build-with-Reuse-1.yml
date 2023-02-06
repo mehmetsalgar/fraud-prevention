@@ -21,3 +21,5 @@ stages:
   displayName: Build
   jobs:
   - template: build.yml@fsm-akka-azure-pipelines
+    parameters:
+      source-repo: 'fraud-prevention-application'
