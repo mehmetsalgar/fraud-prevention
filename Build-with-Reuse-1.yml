@@ -13,4 +13,4 @@ resources:
      endpoint: mehmetsalgar
 
 jobs:
-  - template: build.yml@master
+  - template: build.yml@fsm-akka-azure-pipelines
