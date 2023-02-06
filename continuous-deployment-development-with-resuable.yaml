@@ -3,7 +3,7 @@ pool:
 
 resources:
   pipelines:
-   - pipeline: azure-pipelines
+   - pipeline: Build
      source: azure-pipelines
      trigger: true
 
