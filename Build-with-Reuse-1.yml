@@ -12,4 +12,4 @@ resources:
      name: mehmetsalgar/fsm-akka-azure-pipelines
 
 jobs:
-  - template: build.yaml@master
+  - template: build.yml@master
