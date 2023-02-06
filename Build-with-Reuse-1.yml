@@ -1,4 +1,6 @@
 
+name: java_gradle_ci_build
+
 trigger:
 - master
 
