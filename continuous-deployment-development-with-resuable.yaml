@@ -10,3 +10,24 @@ steps:
   - pwsh: |
       echo 'Halli Hallo'
 
+  - task: PowerShell@2
+    inputs:
+      targetType: inline
+      script: |
+        $url = 'https://dev.azure.com/salgarswtor/fsm-akka-4eyes/_apis/build/builds?api-version=5.0'
+        Write-Host  "URL: $url"
+        $headers = New-Object "System.Collections.Generic.Dictionary[[String] [String]]"
+        $headers.Add("Content-Type", "application/json")
+        $headers.Add("Authorization", "Bearer $(SYSTEM_ACCESSTOKEN)")
+        $body = "{
+           "definition": {
+             "id": "987"
+           }
+        }"
+        $response = Invoke-RestMethod $url - Method 'POST' -Headers $headers -Body $body
+        Write-Host "Pipeline = ($response | ConvertTo-Json -Depth 100)"
+    env:
+      SECURITY_TOKEN: $(System.AccessToken)
+
+
+
