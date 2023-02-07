@@ -25,7 +25,7 @@ steps:
         `n   `"definition`": {
         `n     `"id`": 7
         `n   },
-        `n   `"templateParameters`": {
+        `n   `"parameters`": {
         `n.    `"sourceRepo`": `"fraud-prevention`",
         `n     `"branchName`": `"development`"
         `n   }
