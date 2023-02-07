@@ -19,11 +19,11 @@ steps:
         $headers = New-Object "System.Collections.Generic.Dictionary[[String] [String]]"
         $headers.Add("Content-Type", "application/json")
         $headers.Add("Authorization", "Bearer $(SYSTEM_ACCESSTOKEN)")
-        $body = "{
-           "definition": {
-             "id": "987"
-           }
-        }"
+        $body =       "{
+        `n   `"definition`": {
+        `n     `"id`": 7
+        `n   }
+        `n}"
         $response = Invoke-RestMethod $url - Method 'POST' -Headers $headers -Body $body
         Write-Host "Pipeline = ($response | ConvertTo-Json -Depth 100)"
     env:
