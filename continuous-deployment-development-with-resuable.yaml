@@ -23,8 +23,9 @@ steps:
         $headers.Add("Authorization", "Bearer $env:SECURITY_TOKEN")
         $body = '
         {
-          "definition": { "id": 7 },
-          "parameters": "{\"sourceRepo\":  \"fraud-prevention\", \"branchName\":  \"development\"}"
-        }'
+          "definition": { "id": "7" },
+          "templateParameters": {"sourceRepo":  "fraud-prevention", "branchName":  "development"}
+        }
+        '
         $response = Invoke-RestMethod $url -Method 'POST' -Headers $headers -Body $body
         Write-Host "Pipeline = ($response | ConvertTo-Json -Depth 100)"
