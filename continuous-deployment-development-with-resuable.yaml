@@ -24,6 +24,10 @@ steps:
         $body =       "{
         `n   `"definition`": {
         `n     `"id`": 7
+        `n   },
+        `n   {
+        `n.    `"sourceRepo`": `"fraud-prevention`",
+        `n     `"branchName`": `"development`"
         `n   }
         `n}"
         $response = Invoke-RestMethod $url -Method 'POST' -Headers $headers -Body $body
