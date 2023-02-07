@@ -2,7 +2,7 @@
 name: java_gradle_ci_build
 
 trigger:
-- master
+- development
 
 pool:
   vmImage: ubuntu-latest
