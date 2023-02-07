@@ -1,0 +1,27 @@
+
+name: java_gradle_ci_build
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+- group: HELM_VARIABLES
+- group: DOCKER_VARIABLES
+
+resources:
+ repositories:
+   - repository: fsm-akka-azure-pipelines
+     type: github
+     name: mehmetsalgar/fsm-akka-azure-pipelines
+     endpoint: mehmetsalgar
+
+stages:
+- stage: Build
+  displayName: Build
+  jobs:
+  - template: build.yml@fsm-akka-azure-pipelines
+    parameters:
+      sourceRepo: 'fraud-prevention-application'
