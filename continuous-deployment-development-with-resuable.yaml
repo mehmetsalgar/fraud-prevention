@@ -21,11 +21,11 @@ steps:
         $headers = New-Object "System.Collections.Generic.Dictionary[[String], [String]]"
         $headers.Add("Content-Type", "application/json")
         $headers.Add("Authorization", "Bearer $env:SECURITY_TOKEN")
-        $body = "{
-        `n   `"definition`": { 
-        `n      `"id`": 7 
-        `n   }
-        `n}"
+        $body = '
+        {
+          "definition": { "id": 7 },
+          "parameters": "{\"sourceRepo\":  \"fraud-prevention\", \"branchName\":  \"development\"}"
+        }'
         $response = Invoke-RestMethod $url -Method 'POST' -Headers $headers -Body $body
         Write-Host "Pipeline = ($response | ConvertTo-Json -Depth 100)"
 
