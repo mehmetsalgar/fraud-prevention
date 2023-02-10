@@ -5,12 +5,17 @@ resources:
    - pipeline: Build
      source: Build-with-Reusable
      trigger: true
+  repositories:
+   - repository: fsm-akka-azure-pipelines
+     type: github
+     name: mehmetsalgar/fsm-akka-azure-pipelines
+     endpoint: mehmetsalgar
 
 steps:
   - pwsh: |
       echo 'Halli Hallo'
   
-  - template:
+  - template: dispatch.yml@fsm-akka-azure-pipelines
     parameters:
       definitionId: "9"
       inputs: '"sourceRepo": "fraud-prevention"'
