@@ -42,7 +42,9 @@ jobs:
   - job: PrepareEnvironment
     variables:
         version: $[dependencies.CalculateVersion.outputs['calculateVersion.GitVersion.SemVer']]
-    dependsOn: CalculateVersion, HelmUmbrellaChartPublish 
+    dependsOn: 
+      - CalculateVersion
+      - HelmUmbrellaChartPublish 
     displayName: "Prepare Environment"
     steps:
       - template: dispatch.yml@fsm-akka-azure-pipelines
