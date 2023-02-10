@@ -18,4 +18,5 @@ steps:
   - template: dispatch.yml@fsm-akka-azure-pipelines
     parameters:
       definitionId: "9"
+      branchName: "development"
       inputs: '"sourceRepo": "fraud-prevention"'
