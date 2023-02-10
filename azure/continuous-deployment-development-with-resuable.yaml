@@ -38,7 +38,6 @@ jobs:
         parameters:
           definitionId: "9"
           branchName: "development"
-          inputs: '"sourceRepo": "fraud-prevention"'
   - job: PrepareEnvironment
     variables:
         version: $[dependencies.CalculateVersion.outputs['calculateVersion.GitVersion.SemVer']]
