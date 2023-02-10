@@ -11,12 +11,42 @@ resources:
      name: mehmetsalgar/fsm-akka-azure-pipelines
      endpoint: mehmetsalgar
 
-steps:
-  - pwsh: |
-      echo 'Halli Hallo'
-  
-  - template: dispatch.yml@fsm-akka-azure-pipelines
-    parameters:
-      definitionId: "9"
-      branchName: "development"
-      inputs: '"sourceRepo": "fraud-prevention"'
+jobs:
+  - job: CalculateVersion
+    displayName: Calculate Version
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+     - checkout: self
+       fetchDepth: 0
+     - task: gitversion/setup@0
+       displayName: Install GitVersion
+       inputs:
+        versionSpec: "5.x"
+     - task: gitversion/execute@0
+       name: calculateVersion
+       displayName: Calculating version
+       inputs:
+        useConfigFile: True
+        configFilePath: "GitVersion.yml"
+        additionalArguments: '"/b" "development"'
+  - job: HelmUmbrellaChartPublish
+    dependsOn: CalculateVersion
+    displayName: "Helm Umbrella Chart Publish"
+    steps:
+      - template: dispatch.yml@fsm-akka-azure-pipelines
+        parameters:
+          definitionId: "9"
+          branchName: "development"
+          inputs: '"sourceRepo": "fraud-prevention"'
+  - job: PrepareEnvironment
+    variables:
+        version: $[dependencies.CalculateVersion.outputs['calculateVersion.GitVersion.SemVer']]
+    dependsOn: CalculateVersion, HelmUmbrellaChartPublish 
+    displayName: "Prepare Environment"
+    steps:
+      - template: dispatch.yml@fsm-akka-azure-pipelines
+        parameters:
+          definitionId: "11"
+          branchName: "development"
+          inputs: '"sourceRepo": "fraud-prevention", "version": "$(version)" '
