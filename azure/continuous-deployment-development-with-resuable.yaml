@@ -49,4 +49,4 @@ jobs:
         parameters:
           definitionId: "11"
           branchName: "development"
-          inputs: '"sourceRepo": "fraud-prevention", "version": "$(version)" '
+          inputs: '"sourceRepo": "fraud-prevention", "version": "$(version)"'
