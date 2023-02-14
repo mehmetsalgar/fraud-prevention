@@ -2,9 +2,14 @@ name: Contionuous Deployment for Development
 
 resources:
   pipelines:
-   - pipeline: Build
-     source: Build-with-Reusable
-     trigger: true
+    - pipeline: Build
+      source: Build-with-Reusable
+      trigger:
+        enabled: true 
+        branches:
+          include:
+            - development
+
   repositories:
    - repository: fsm-akka-azure-pipelines
      type: github
