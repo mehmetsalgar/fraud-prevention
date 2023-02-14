@@ -1,0 +1,13 @@
+name: Continuous Deployment Pull Request with Reusable
+
+pr:
+- deployment
+
+pool:
+  vmImage: ubuntu-latest
+
+jobs:
+  - job: echo
+    steps:
+      - bash: |
+          echo "We are here!"
