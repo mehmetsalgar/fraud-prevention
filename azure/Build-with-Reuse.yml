@@ -1,8 +1,13 @@
 
 name: java_gradle_ci_build
-
 trigger:
-- development
+  branches:
+    include:
+      - development
+  paths:
+    exclude:
+      - "azure/**/*.yml"
+  
 
 pool:
   vmImage: ubuntu-latest
