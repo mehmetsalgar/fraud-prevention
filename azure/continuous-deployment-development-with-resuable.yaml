@@ -9,6 +9,8 @@ resources:
         branches:
           include:
             - development
+          exclude:
+            - feature/*
 
   repositories:
    - repository: fsm-akka-azure-pipelines
