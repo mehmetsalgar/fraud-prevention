@@ -1,13 +1,29 @@
 name: Continuous Deployment Pull Request with Reusable
-
 pr:
-- deployment
+- development
 
 pool:
   vmImage: ubuntu-latest
 
-jobs:
-  - job: echo
-    steps:
-      - bash: |
-          echo "We are here!"
+variables:
+- group: HELM_VARIABLES
+- group: DOCKER_VARIABLES
+
+resources:
+ repositories:
+   - repository: fsm-akka-azure-pipelines
+     type: github
+     name: mehmetsalgar/fsm-akka-azure-pipelines
+     endpoint: mehmetsalgar
+
+stages:
+  - stage: Build
+    displayName: Build
+    jobs:
+    - template: continuous-deployment-with-environment.yml@fsm-akka-azure-pipelines
+      parameters:
+        repoName: 'fraud-prevention-application'
+        branchName: $(basename(System.PullRequest.SourceBranch))
+        umbrellaChartBaseName: 'development'
+        infrastructureBaseBranchName: 'development'
+        valueFile: "value-dev"
