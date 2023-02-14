@@ -8,9 +8,9 @@ resources:
         enabled: true 
         branches:
           include:
-            - development
+          - development
           exclude:
-            - feature/*
+          - feature/*
 
   repositories:
    - repository: fsm-akka-azure-pipelines
