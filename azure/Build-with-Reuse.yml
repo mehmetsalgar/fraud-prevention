@@ -1,5 +1,5 @@
 
-name: java_gradle_ci_build
+name: Java Gradle CI Build
 trigger:
   branches:
     include:
