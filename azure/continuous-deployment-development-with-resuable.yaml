@@ -44,7 +44,7 @@ jobs:
       - template: dispatch.yml@fsm-akka-azure-pipelines
         parameters:
           definitionId: "9"
-          branchName: "development"
+          sourceBranch: "development"
   - job: PrepareEnvironment
     variables:
         version: $[dependencies.CalculateVersion.outputs['calculateVersion.GitVersion.SemVer']]
@@ -54,5 +54,5 @@ jobs:
       - template: dispatch.yml@fsm-akka-azure-pipelines
         parameters:
           definitionId: "11"
-          branchName: "development"
+          sourceBranch: "development"
           inputs: '"sourceRepo": "fraud-prevention", "version": "$(version)"'
