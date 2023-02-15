@@ -11,11 +11,16 @@ variables:
 - group: DOCKER_VARIABLES
 
 resources:
- repositories:
-   - repository: fsm-akka-azure-pipelines
-     type: github
-     name: mehmetsalgar/fsm-akka-azure-pipelines
-     endpoint: mehmetsalgar
+  repositories:
+    - repository: fsm-akka-azure-pipelines
+      type: github
+      name: mehmetsalgar/fsm-akka-azure-pipelines
+      endpoint: mehmetsalgar
+    - repository: ServiceRepository
+      type: github
+      endpoint: mehmetsalgar
+      name: mehmetsalgar/fraud-prevention
+      ref: $(System.PullRequest.SourceBranch)
 
 stages:
   - stage: Build
