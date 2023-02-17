@@ -4,16 +4,15 @@ resources:
     - pipeline: Build
       source: Build-with-Reusable
       trigger:
-        enabled: true 
         branches:
           include:
-          - ref/heads/development
+          - refs/heads/development
           exclude:
-          - ref/heads/master
-          - ref/heads/feature/*
-          - ref/heads/release/*
-          - ref/heads/bugfix/*
-          - ref/heads/hotfix/*
+          - refs/heads/master
+          - refs/heads/feature/*
+          - refs/heads/release/*
+          - refs/heads/bugfix/*
+          - refs/heads/hotfix/*
   repositories:
    - repository: fsm-akka-azure-pipelines
      type: github
