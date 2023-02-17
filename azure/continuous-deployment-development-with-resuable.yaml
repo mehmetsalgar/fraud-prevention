@@ -40,6 +40,7 @@ jobs:
     dependsOn: CalculateVersion
     displayName: "Helm Umbrella Chart Publish"
     steps:
+      #Helm Publish with Reuse - fsm-akka-helm-umbrella-chart
       - template: dispatch.yml@fsm-akka-azure-pipelines
         parameters:
           definitionId: "9"
@@ -53,6 +54,7 @@ jobs:
       - HelmUmbrellaChartPublish 
     displayName: "Prepare Environment"
     steps:
+      #Prepare Environment - fsm-akka-dev-environment
       - template: dispatch.yml@fsm-akka-azure-pipelines
         parameters:
           definitionId: "11"
