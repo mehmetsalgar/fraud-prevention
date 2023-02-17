@@ -9,8 +9,11 @@ resources:
           include:
           - ref/heads/development
           exclude:
+          - ref/heads/master
           - ref/heads/feature/*
           - ref/heads/release/*
+          - ref/heads/bugfix/*
+          - ref/heads/hotfix/*
   repositories:
    - repository: fsm-akka-azure-pipelines
      type: github
