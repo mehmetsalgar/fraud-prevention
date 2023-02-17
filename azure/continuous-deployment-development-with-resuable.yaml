@@ -10,6 +10,7 @@ resources:
           - ref/heads/development
           exclude:
           - ref/heads/feature/*
+          - ref/heads/release/*
   repositories:
    - repository: fsm-akka-azure-pipelines
      type: github
