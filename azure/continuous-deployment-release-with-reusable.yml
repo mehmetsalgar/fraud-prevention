@@ -1,5 +1,4 @@
 name: Continuous Deployment Release with Reusable
-
 pool:
   vmImage: ubuntu-latest
 
@@ -15,9 +14,13 @@ resources:
         enabled: true
         branches:
           include:
-            - ref/heads/development
+            - ref/heads/release/*
           exclude:
+            - ref/heads/master
+            - ref/heads/development
             - ref/heads/feature/*
+            - ref/heads/bugfix/*
+            - ref/heads/hotfix/*
   repositories:
     - repository: fsm-akka-azure-pipelines
       type: github
