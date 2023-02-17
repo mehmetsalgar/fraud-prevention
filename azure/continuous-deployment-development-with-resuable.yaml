@@ -1,5 +1,4 @@
 name: Contionuous Deployment for Development
-
 resources:
   pipelines:
     - pipeline: Build
@@ -8,10 +7,9 @@ resources:
         enabled: true 
         branches:
           include:
-          - development
+          - ref/heads/development
           exclude:
-          - feature/*
-
+          - ref/heads/feature/*
   repositories:
    - repository: fsm-akka-azure-pipelines
      type: github
