@@ -2,16 +2,16 @@ name: Java Gradle CI Build
 trigger:
   branches:
     include:
-      - development
-      - feature/*
-      - release/*
-      - bugfix/*
-      - hotfix/*
+      - refs/heads/development
+      - refs/heads/feature/*
+      - refs/heads/release/*
+      - refs/heads/bugfix/*
+      - refs/heads/hotfix/*
     exclude:
       - master
   paths:
     exclude:
-      - "azure/**/*.yml"
+      - "azure/*.yml"
 
 pr: none
 
