@@ -3,6 +3,7 @@ pr:
   branches:
     include:
       - refs/heads/development
+      - refs/heads/feature/*
   paths:
     exclude:
       - "azure/*.yml"
