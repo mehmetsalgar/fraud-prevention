@@ -1,6 +1,11 @@
 name: Continuous Deployment Pull Request with Reusable
 pr:
-- development
+  branches:
+    include:
+      - refs/heads/development
+  paths:
+    exclude:
+      - "azure/*.yml"
 trigger: none
 
 pool:
