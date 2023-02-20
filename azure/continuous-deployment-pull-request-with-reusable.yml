@@ -29,6 +29,7 @@ stages:
     - template: continuous-deployment-with-environment.yml@fsm-akka-azure-pipelines
       parameters:
         repoName: 'fraud-prevention'
+        buildType: 'feature'
         branchName: $(System.PullRequest.SourceBranch)
         umbrellaChartBaseName: 'development'
         infrastructureBaseBranchName: 'development'
