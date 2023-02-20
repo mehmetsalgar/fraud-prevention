@@ -15,11 +15,11 @@ resources:
           include:
             - release/*
           exclude:
-            - master
-            - development
-            - feature/*
-            - bugfix/*
-            - hotfix/*
+            - refs/heads/master
+            - refs/heads/development
+            - refs/heads/feature/*
+            - refs/heads/bugfix/*
+            - refs/heads/hotfix/*
   repositories:
     - repository: fsm-akka-azure-pipelines
       type: github
