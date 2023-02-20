@@ -6,13 +6,13 @@ resources:
       trigger:
         branches:
           include:
-          - refs/heads/development
+          - development
           exclude:
-          - refs/heads/master
-          - refs/heads/feature/*
-          - refs/heads/release/*
-          - refs/heads/bugfix/*
-          - refs/heads/hotfix/*
+          - master
+          - feature/*
+          - release/*
+          - bugfix/*
+          - hotfix/*
   repositories:
    - repository: fsm-akka-azure-pipelines
      type: github
