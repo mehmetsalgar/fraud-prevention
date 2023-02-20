@@ -13,7 +13,7 @@ resources:
       trigger:
         branches:
           include:
-            - release/*
+            - refs/heads/release/*
           exclude:
             - refs/heads/master
             - refs/heads/development
