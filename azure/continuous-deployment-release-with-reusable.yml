@@ -35,7 +35,6 @@ stages:
   - stage: Build
     displayName: Build
     jobs:
-    - job: ABC
     - template: continuous-deployment-with-environment.yml@fsm-akka-azure-pipelines
       parameters:
         repoName: 'fraud-prevention'
