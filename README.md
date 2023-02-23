@@ -2,4 +2,4 @@ Fraud Prevention Service for FSM Akka Event Sourcing Application
 Azure Container Registry
 fsmakka.azurecr.io -> correlationID b254c68b-f6c0-47fe-b922-13d97f535957
 
-R1.2.5-1
+dev1.2.alpha
