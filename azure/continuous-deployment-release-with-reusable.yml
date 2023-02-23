@@ -40,6 +40,6 @@ stages:
         repoName: 'fraud-prevention'
         buildType: 'release'
         branchName: $(Build.SourceBranch)
-        umbrellaChartBaseName: 'master'
+        umbrellaChartBaseName: 'development'
         infrastructureBaseBranchName: 'master'
         valueFile: "value-release"
