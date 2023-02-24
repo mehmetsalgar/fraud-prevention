@@ -1,4 +1,4 @@
-name: Cleanup Environment with Reuse
+name: Cleanup Release Environment with Reuse
 trigger: none
 
 parameters:
