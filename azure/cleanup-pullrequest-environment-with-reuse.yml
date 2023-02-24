@@ -1,4 +1,4 @@
-name: Cleanup Environment with Reuse
+name: Cleanup PullRequest Environment with Reuse
 trigger: none
 
 parameters:
