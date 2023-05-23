@@ -16,6 +16,7 @@ buildscript {
 
 plugins {
 	id 'java'
+	id 'java-library'
 	id 'org.springframework.boot' version '3.0.0'
 	id 'io.spring.dependency-management' version '1.1.0'
 	id 'org.graalvm.buildtools.native' version '0.9.18'
@@ -37,10 +38,13 @@ if(ext.flag) {
 	ext.props = [
 			DOCKER_HUB_USER: property('DOCKER_HUB_USER'),
 			DOCKER_HUB_PASSWORD: property('DOCKER_HUB_PASSWORD'),
+			DOCKER_URL: property('DOCKER_URL'),
 			DOCKER_UPLOAD_USER: property('DOCKER_UPLOAD_USER'),
 			DOCKER_UPLOAD_PASSWORD: property('DOCKER_UPLOAD_PASSWORD'),
+			HELM_URL: property('HELM_URL'),
 			HELM_USER: property('HELM_USER'),
-			HELM_PASSWORD: property('HELM_PASSWORD')
+			HELM_PASSWORD: property('HELM_PASSWORD'),
+			HELM_DOWNLOAD_CLIENT: property('HELM_DOWNLOAD_CLIENT')
 	]
 }
 
@@ -79,7 +83,7 @@ jib {
 		}
 	}
 	to {
-		image = "fsmakka.azurecr.io/fsmakka/${project.name}"
+		image = "${props.DOCKER_URL}/${project.name}"
 		tags = ["${project.version}"]
 		auth {
 			username = "${props.DOCKER_UPLOAD_USER}"
@@ -91,8 +95,8 @@ jib {
 
 helm {
 	downloadClient {
-		enabled = true
-		version = '3.10.1'
+		enabled = downloadHelmClient()
+		version = '3.12.1'
 	}
 	charts {
 		fp {
@@ -113,6 +117,20 @@ task printVersion {
 		logger.lifecycle("Version:  ${project.version}")
 	}
 }
+
+def helmProcess() {
+	if("true" == property("HELM_PROCESS"))
+		true
+	else
+		false
+}
+
+def downloadHelmClient() {
+	if("true" == property("HELM_DOWNLOAD_CLIENT"))
+		true
+	else
+		false
+}
+
 tasks.jib.dependsOn tasks.printVersion
-tasks.helmPackage.dependsOn tasks.jib
-tasks.build.dependsOn tasks.helmPackage
+tasks.build.dependsOn tasks.jib
